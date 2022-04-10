@@ -1,0 +1,27 @@
+{
+  "name": "cleanarchitecture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && jest dist/",
+    "coverage": "tsc && jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevKleber/CleanArchitecture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevKleber/CleanArchitecture/issues"
+  },
+  "homepage": "https://github.com/DevKleber/CleanArchitecture#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "typescript": "^4.6.3"
+  }
+}
