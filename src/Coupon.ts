@@ -11,7 +11,8 @@ export class Coupon {
 		return this.expireDate.getTime() >= today.getTime();
 	}
 
-	applyDiscount(amount: number) {
+	calculateDiscount(amount: number, today: Date = new Date()) {
+		if (!this.isValid(today)) return 0;
 		return (amount * this.percentage) / 100;
 	}
 }
