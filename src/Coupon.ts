@@ -10,4 +10,8 @@ export class Coupon {
 
 		return this.expireDate.getTime() >= today.getTime();
 	}
+
+	applyDiscount(amount: number) {
+		return (amount * this.percentage) / 100;
+	}
 }

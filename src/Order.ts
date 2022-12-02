@@ -24,7 +24,7 @@ export class Order {
 			total += orderItem.getTotal();
 		}
 		if (this.coupon) {
-			total -= (total * this.coupon.percentage) / 100;
+			total -= this.coupon.applyDiscount(total);
 		}
 		return total;
 	}
