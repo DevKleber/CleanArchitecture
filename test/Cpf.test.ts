@@ -1,4 +1,4 @@
-import { Cpf } from "../src/Cpf";
+import { Cpf } from "../src/domain/entity/Cpf";
 
 test("CPF deve ser valido", () => {
 	const cpfValid = "704.557.190-98";
