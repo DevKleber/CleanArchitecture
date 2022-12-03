@@ -56,7 +56,7 @@ test("Deve criar um pedido vazio com 3 itens com um cupom de desconto expirado",
 	expect(total).toBe(160);
 });
 
-test("Deve criar um pedido vazio com 3 itens com o calculo do frete", () => {
+test("Deve criar um pedido vazio com 3 itens com o calculo do frete com a estratégia default", () => {
 	const cpf = "839.435.452-10";
 	const order = new Order(cpf, new Date(), new DefaultFreightCalculator());
 
@@ -66,4 +66,15 @@ test("Deve criar um pedido vazio com 3 itens com o calculo do frete", () => {
 
 	const freight = order.getFreight();
 	expect(freight).toBe(260);
+});
+test("Deve criar um pedido vazio com 3 itens com o calculo do frete com a fixo default", () => {
+	const cpf = "839.435.452-10";
+	const order = new Order(cpf, new Date(), new DefaultFreightCalculator());
+
+	order.addItem(new Item(4, "Instrumentos Musicas", "Guitarra", 1000, 100, 30, 10, 3), 1);
+	order.addItem(new Item(5, "Instrumentos musicais", "Amplificador", 5000, 100, 50, 50, 20), 1);
+	order.addItem(new Item(6, "Acessórios", "Cabo", 30, 10, 10, 10, 0.9), 3);
+
+	const freight = order.getFreight();
+	expect(freight).toBe(10);
 });
