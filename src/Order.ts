@@ -1,5 +1,6 @@
 import { Coupon } from "./Coupon";
 import { Cpf } from "./Cpf";
+import { FreigthCalculator } from "./FreightCalculator";
 import { Item } from "./Item";
 import { OrderItem } from "./OrderItem";
 
@@ -7,15 +8,20 @@ export class Order {
 	cpf: Cpf;
 	orderItems: OrderItem[];
 	coupon: Coupon | undefined;
+	private freight: number;
 
 	constructor(cpf: string, readonly date: Date = new Date()) {
 		this.cpf = new Cpf(cpf);
 		this.orderItems = [];
+		this.freight = 0;
 	}
 
-	addItem(item: Item, quantity: number): number {
+	addItem(item: Item, quantity: number): void {
+		this.freight += FreigthCalculator.calculate(item) * quantity;
 		this.orderItems.push(new OrderItem(item.idItem, item.price, quantity));
-		return 1;
+	}
+	getFreight() {
+		return this.freight;
 	}
 
 	getTotal(): number {
