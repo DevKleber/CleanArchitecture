@@ -1,9 +1,5 @@
 export class Coupon {
-	constructor(
-		readonly code: string,
-		readonly percentage: number,
-		readonly expireDate?: Date
-	) {}
+	constructor(readonly code: string, readonly percentage: number, readonly expireDate?: Date) {}
 
 	isValid(today: Date = new Date()) {
 		if (!this.expireDate) return true;
