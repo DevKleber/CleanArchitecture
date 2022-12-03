@@ -1,4 +1,5 @@
 import { Coupon } from "../src/Coupon";
+import { DefaultFreightCalculator } from "../src/DefaultFreightCalculator";
 import { Item } from "../src/Item";
 import { Order } from "../src/Order";
 
@@ -57,7 +58,7 @@ test("Deve criar um pedido vazio com 3 itens com um cupom de desconto expirado",
 
 test("Deve criar um pedido vazio com 3 itens com o calculo do frete", () => {
 	const cpf = "839.435.452-10";
-	const order = new Order(cpf);
+	const order = new Order(cpf, new Date(), new DefaultFreightCalculator());
 
 	order.addItem(
 		new Item(4, "Instrumentos Musicas", "Guitarra", 1000, 100, 30, 10, 3),
