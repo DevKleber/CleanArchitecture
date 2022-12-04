@@ -37,6 +37,8 @@ export class Order {
 		if (this.coupon) {
 			total -= this.coupon.calculateDiscount(total, this.date);
 		}
+
+		total += this.getFreight();
 		return total;
 	}
 

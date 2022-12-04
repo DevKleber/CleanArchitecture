@@ -2,13 +2,14 @@ const FACTOR_DIGIT_1 = 10;
 const FACTOR_DIGIT_2 = 11;
 
 export class Cpf {
-	constructor(value: string) {
+	constructor(readonly value: string) {
 		if (!this.validate(value)) {
 			throw new Error("CPF inválido");
 		}
+		this.value = value;
 	}
 
-	validate(rawCpf: string) {
+	private validate(rawCpf: string) {
 		if (!rawCpf) {
 			return false;
 		}
@@ -32,19 +33,19 @@ export class Cpf {
 		return actualDigit === calculatedDigit;
 	}
 
-	removeMask(cpf: string) {
+	private removeMask(cpf: string) {
 		return cpf.replace(/\D/g, "");
 	}
-	sizeOfCPFHas11Digits = (cpf: string) => {
+	private sizeOfCPFHas11Digits(cpf: string) {
 		return cpf.length === 11;
-	};
+	}
 
-	allNumbersAreEqual(cpf: string) {
+	private allNumbersAreEqual(cpf: string) {
 		const [firstDigit] = cpf;
 		return [...cpf].every((digit) => digit === firstDigit);
 	}
 
-	calculateDigit(cpf: string, factor: number) {
+	private calculateDigit(cpf: string, factor: number) {
 		let total = 0;
 		for (const digit of cpf) {
 			if (factor > 1) {
